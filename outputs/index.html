@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="Check a message for common spam patterns or review a news story for signals worth verifying.">
+  <title>Clearcheck — Read with more confidence</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Clearcheck home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 6.8"/><path d="M21 12a9 9 0 1 1-2.64-6.36"/></svg></span>
+        <span>clearcheck<span class="brand-period">.</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="privacy-note"><span class="privacy-dot"></span> Your text stays on this device</span>
+        <button class="icon-button" id="aboutButton" aria-label="About Clearcheck" title="About Clearcheck">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <div class="eyebrow"><span class="eyebrow-line"></span> A clearer read starts here</div>
+        <h1>Pause. Check.<br><span>Then decide.</span></h1>
+        <p class="intro-copy">A little context can make a big difference. Scan a message for common scam tactics, or spot language in a story that may deserve a closer look.</p>
+      </section>
+
+      <section class="workspace" aria-label="Text checker">
+        <div class="checker-card">
+          <div class="card-heading">
+            <div>
+              <span class="section-kicker">QUICK CHECK</span>
+              <h2>What would you like to check?</h2>
+            </div>
+            <div class="step-count"><span>01</span> <span class="step-slash">/</span> 02</div>
+          </div>
+
+          <div class="mode-switch" role="tablist" aria-label="Choose a check type">
+            <button class="mode-tab active" id="spamTab" role="tab" aria-selected="true" aria-controls="inputPanel" data-mode="spam">
+              <span class="mode-icon spam-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 12 13l8-5.5"/><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="m4.5 17 5-4M19.5 17l-5-4"/></svg></span>
+              <span class="tab-copy"><strong>Spam message</strong><small>Email, text, or DM</small></span>
+              <span class="tab-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span>
+            </button>
+            <button class="mode-tab" id="newsTab" role="tab" aria-selected="false" aria-controls="inputPanel" data-mode="news">
+              <span class="mode-icon news-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h12.5A1.5 1.5 0 0 1 19 6v13.5H6A2.5 2.5 0 0 1 3.5 17V6A1.5 1.5 0 0 1 5 4.5Z"/><path d="M7 8h5v4H7zM14 8h3M14 10.5h3M7 15h10M7 17.5h10"/><path d="M19 17.5a2 2 0 0 0 2-2V7"/></svg></span>
+              <span class="tab-copy"><strong>News or claim</strong><small>Article, post, or headline</small></span>
+              <span class="tab-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span>
+            </button>
+          </div>
+
+          <div class="input-area" id="inputPanel" role="tabpanel" aria-labelledby="spamTab">
+            <div class="input-label-row">
+              <label for="textInput" id="inputLabel">Paste the message you received</label>
+              <span class="optional-label">TEXT ONLY</span>
+            </div>
+            <div class="textarea-wrap">
+              <textarea id="textInput" maxlength="5000" placeholder="Paste a suspicious email, text, or direct message here…" spellcheck="true"></textarea>
+              <div class="textarea-footer">
+                <span class="textarea-hint"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8 2.5 4v3.5c0 3.2 2.1 5.3 5.5 6.7 3.4-1.4 5.5-3.5 5.5-6.7V4L8 1.8Z"/><path d="m5.5 7.8 1.7 1.7 3.4-3.7"/></svg> Nothing is uploaded or saved</span>
+                <span id="charCount">0 / 5,000</span>
+              </div>
+            </div>
+            <div class="action-row">
+              <button class="text-button" id="clearButton" type="button">Clear text</button>
+              <button class="analyze-button" id="analyzeButton" type="button" disabled>
+                <span>Check this text</span>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5"/></svg>
+              </button>
+            </div>
+            <div class="try-sample"><span>Need a sample?</span><button type="button" class="sample-link" id="sampleButton">Try an example <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4"/></svg></button></div>
+          </div>
+        </div>
+
+        <aside class="aside-column">
+          <div class="aside-card how-card">
+            <div class="aside-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v5.3c0 4.4 2.8 7.6 7.5 9.7 4.7-2.1 7.5-5.3 7.5-9.7V6L12 3Z"/><path d="m8.5 12 2.3 2.3 4.8-5.1"/></svg></div>
+            <h3>A helpful second look</h3>
+            <p>Clearcheck looks for familiar persuasion and credibility patterns. It gives you clues to investigate, not a verdict.</p>
+            <div class="aside-divider"></div>
+            <div class="how-step"><span>1</span><p><strong>Paste</strong> the text you want to review</p></div>
+            <div class="how-step"><span>2</span><p><strong>Scan</strong> the signals it highlights</p></div>
+            <div class="how-step"><span>3</span><p><strong>Verify</strong> important claims at the source</p></div>
+          </div>
+          <div class="aside-card reminder-card">
+            <div class="reminder-top"><span class="reminder-spark">✳</span><span>GOOD TO REMEMBER</span></div>
+            <p>Urgency is a common pressure tactic. Take a breath before clicking, paying, or sharing.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="result-section" id="resultSection" aria-live="polite" hidden>
+        <div class="result-heading">
+          <div><span class="section-kicker">YOUR CHECK</span><h2 id="resultTitle">A few things stood out</h2></div>
+          <button class="text-button" id="newCheckButton" type="button">Start a new check <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="result-grid">
+          <div class="score-card" id="scoreCard">
+            <div class="score-topline"><span id="scoreEyebrow">PATTERN SCORE</span><span class="score-type" id="scoreType">SPAM CHECK</span></div>
+            <div class="score-number"><span id="scoreValue">0</span><small>/ 100</small></div>
+            <div class="meter" aria-label="Pattern score"><span id="meterFill"></span></div>
+            <div class="meter-labels"><span>Fewer signals</span><span>More signals</span></div>
+            <div class="verdict"><span class="verdict-icon" id="verdictIcon"><svg viewBox="0 0 20 20"><path d="M10 2.5 2.8 6v4.2c0 3.8 2.6 6.6 7.2 8.3 4.6-1.7 7.2-4.5 7.2-8.3V6L10 2.5Z"/><path d="m6.8 10 2.1 2.1 4.3-4.5"/></svg></span><div><strong id="verdictTitle">Few obvious signals</strong><span id="verdictCopy">No common patterns jumped out.</span></div></div>
+            <p class="score-disclaimer" id="scoreDisclaimer">This score reflects common spam patterns in the text. It cannot confirm whether a sender is safe.</p>
+          </div>
+          <div class="signals-card">
+            <div class="signals-heading"><div><h3>What we noticed</h3><p>Signals are clues, not proof.</p></div><span class="signal-count" id="signalCount">0 signals</span></div>
+            <div class="signal-list" id="signalList"></div>
+            <div class="verify-box" id="verifyBox"><span class="verify-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4M8.5 6v5M8.5 13h.01"/></svg></span><p id="verifyCopy">If money or personal information is involved, contact the organization using a number or website you find independently.</p></div>
+          </div>
+        </div>
+        <div class="result-footnote"><span class="footnote-dot"></span><span id="resultFootnote">Your text was analyzed in this browser and was not sent to a server.</span></div>
+      </section>
+
+      <section class="lower-note" aria-label="Guidance">
+        <div class="lower-note-mark">i</div>
+        <p><strong>Use your judgment.</strong> Text patterns alone can’t prove a message is a scam or a story is false. For news claims, compare independent reporting and follow links to original research, records, or firsthand sources.</p>
+        <a href="https://www.cisa.gov/secure-our-world/recognize-and-report-phishing" target="_blank" rel="noreferrer">Phishing safety tips <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer><span>© 2026 Clearcheck</span><span>Built to help you pause and verify.</span><button class="footer-about" id="footerAbout">How it works</button></footer>
+  </div>
+
+  <dialog id="aboutDialog" class="about-dialog">
+    <button class="dialog-close" id="closeDialog" aria-label="Close">×</button>
+    <span class="section-kicker">A NOTE ON ACCURACY</span>
+    <h2>Signals help you ask better questions.</h2>
+    <p>Clearcheck runs a small set of transparent text-pattern checks in your browser. Spam checks look for common pressure tactics and suspicious link patterns. News checks flag language and sourcing cues that can be useful starting points.</p>
+    <p>It does not browse the web, verify a publisher, inspect a link, or determine whether a claim is true. A low score is not a guarantee of safety or accuracy. Check important claims with reliable, independent sources.</p>
+    <button class="analyze-button dialog-done" id="dialogDone" type="button">Got it</button>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
+
